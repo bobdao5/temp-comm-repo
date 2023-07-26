@@ -140,7 +140,7 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
         <div className="w-full">
           <div className="flex justify-start items-center space-x-2 border">
             {currentFreelancerData?.about === "" ||
-              currentFreelancerData?.about === null ? (
+            currentFreelancerData?.about === null ? (
               <p className="text-sm p-8 w-[calc(90%)] text-blue-300">
                 Add something about you to show clients you're worthy
               </p>
@@ -163,7 +163,7 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
           </div>
         </div>
         <div className="flex m-10 -ml-2">
-          <div className="w-full flex space-x-4 items-center justify-center">
+          {/* //<div className="w-full flex space-x-4 items-center justify-center">
             <div>
               <img
                 src="https://img.icons8.com/material-outlined/344/clock--v1.png"
@@ -207,7 +207,7 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
               </span>
               <span>Total Jobs</span>
             </div>
-          </div>
+            </div> */}
         </div>
         <div className="border flex flex-col p-10 border-b-0">
           <div className="flex space-x-5">
@@ -219,12 +219,14 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
           <div className="flex justify-between">
             <span className="font-bold">Work Ex.</span>
             {allowEdit && (
-              <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer"
+              <div
+                className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer"
                 name="experience"
-                onClick={() => handleClick("experience")}>
+                onClick={() => handleClick("experience")}
+              >
                 <span
                   className="text-white text-sm"
-                // onClick={() => setState({ activate: true, deactivate: false })}
+                  // onClick={() => setState({ activate: true, deactivate: false })}
                 >
                   Add
                 </span>
@@ -235,8 +237,8 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
                   style={{
                     filter: "brightness(0) invert(1)",
                   }}
-                // name="experience"
-                // onClick={(e) => handleClick(e)}
+                  // name="experience"
+                  // onClick={(e) => handleClick(e)}
                 />
               </div>
             )}
@@ -267,7 +269,8 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
           <div className="flex justify-between">
             <span className="font-bold">Education</span>
             {allowEdit && (
-              <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer"
+              <div
+                className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer"
                 onClick={() => handleClick("education")}
               >
                 <span className="text-white text-sm">Add</span>
@@ -304,8 +307,10 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
           <div className="flex justify-between">
             <span className="font-bold">Projects</span>
             {allowEdit && (
-              <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer"
-                onClick={() => handleClick("projects")}>
+              <div
+                className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer"
+                onClick={() => handleClick("projects")}
+              >
                 <span className="text-white text-sm">Add</span>
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
@@ -315,7 +320,6 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
                     filter: "brightness(0) invert(1)",
                   }}
                   name="projects"
-               
                 />
               </div>
             )}

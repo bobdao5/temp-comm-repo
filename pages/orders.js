@@ -13,10 +13,7 @@ import TxBox from "../components/Validation/TxBox";
 import { useSigner } from "wagmi";
 import { ethers } from "ethers";
 
-const {
-  contractAddresses,
-  Freelanco_abi,
-} = require("../constants");
+const { contractAddresses, Freelanco_abi } = require("../constants");
 
 const ClientProfile = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -41,7 +38,6 @@ const ClientProfile = () => {
   const { user, signer, chainId } = useAuth();
 
   const [selectedOrder, setSelectedOrder] = useState(undefined);
-
 
   useEffect(() => {
     const getData = async () => {
@@ -99,10 +95,9 @@ const ClientProfile = () => {
         contractAddresses["Gig"][chainId]?.[0] &&
         contractAddresses["Freelanco"][chainId]?.[0]
       ) {
-
         FreelancoContract = new ethers.Contract(
           contractAddresses["Freelanco"][chainId]?.[0],
-          Freelanco_abi,
+          Freelanco_abi
         );
       }
       console.log("Sending to Offer ID: ", BigInt(selectedOrder?.offerId));
@@ -140,10 +135,9 @@ const ClientProfile = () => {
         contractAddresses["Gig"][chainId]?.[0] &&
         contractAddresses["Freelanco"][chainId]?.[0]
       ) {
-
         FreelancoContract = new ethers.Contract(
           contractAddresses["Freelanco"][chainId]?.[0],
-          Freelanco_abi,
+          Freelanco_abi
         );
       }
       console.log("Sending to Offer ID: ", BigInt(selectedOrder?.offerId));
@@ -159,7 +153,7 @@ const ClientProfile = () => {
       setShowDisputeDialog(false);
       setTxMessage(tx.hash);
       setShowTxDialog(true);
-      (tx.hash);
+      tx.hash;
       await tx.wait();
       console.log(tx);
       location.reload();
@@ -188,7 +182,7 @@ const ClientProfile = () => {
         show={showTxDialog}
         cancel={setShowTxDialog}
         txMessage={txMessage}
-      // routeToPush={"/client-profile"}
+        // routeToPush={"/client-profile"}
       />
       <button
         data-drawer-target="default-sidebar"
@@ -367,7 +361,7 @@ const ClientProfile = () => {
       <div
         class="p-4 sm:ml-64  pt-20 min-h-screen bg-cover"
         style={{
-          backgroundImage: `url('/ff.jpeg')`,
+          backgroundImage: `url('/bgnd.jpg')`,
 
           // filter: "blur(8px)",
         }}
@@ -375,11 +369,11 @@ const ClientProfile = () => {
         {selectedOrder !== undefined ? (
           <div
             className="flex flex-col mb-20"
-          // className={
-          //   showReviewDialog === true || showReviewDialog == true
-          //     ? "flex flex-3/4 w-3/4 flex-col mb-20 border opacity-5 "
-          //     : "flex flex-3/4 w-3/4 flex-col mb-20 border"
-          // }
+            // className={
+            //   showReviewDialog === true || showReviewDialog == true
+            //     ? "flex flex-3/4 w-3/4 flex-col mb-20 border opacity-5 "
+            //     : "flex flex-3/4 w-3/4 flex-col mb-20 border"
+            // }
           >
             <div
               id="popup-modal"
@@ -424,8 +418,8 @@ const ClientProfile = () => {
                     <div className="flex flex-col">
                       <Link
                         href="#"
-                      // href={`/freelancer-profile/${approvedProosals[selectedOrder]?.client?._id}`}
-                      // to={`/freelancer-profile/6`}
+                        // href={`/freelancer-profile/${approvedProosals[selectedOrder]?.client?._id}`}
+                        // to={`/freelancer-profile/6`}
                       >
                         <span className="font-bold text-md hover:underline cursor-pointer text-white">
                           {selectedOrder?.gig_detail?.title}{" "}
@@ -474,7 +468,7 @@ const ClientProfile = () => {
                           </div>
                         </li>
                         {selectedOrder?.status != "Rejected" &&
-                          selectedOrder?.status != "Sent" ? (
+                        selectedOrder?.status != "Sent" ? (
                           <li class="mb-10 ml-6">
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3  ring-blue-900 dark:ring-gray-900 dark:bg-blue-900">
                               {/* <img
@@ -564,7 +558,7 @@ const ClientProfile = () => {
                         )}
 
                         {selectedOrder?.status == "Completed" ||
-                          selectedOrder?.status == "Successful" ? (
+                        selectedOrder?.status == "Successful" ? (
                           <li class="ml-6">
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-blue-900 dark:ring-gray-900 dark:bg-blue-900">
                               {/* <img
@@ -757,7 +751,7 @@ const ClientProfile = () => {
                 </>
                 <>
                   {selectedOrder?.status == "Approved" ||
-                    selectedOrder?.status == "Completed" ? (
+                  selectedOrder?.status == "Completed" ? (
                     <button
                       class="text-gray-800 border-red-900  w-full text-center justify-center mt-10 border font-bold py-2 px-4 rounded inline-flex items-center"
                       onClick={() => {

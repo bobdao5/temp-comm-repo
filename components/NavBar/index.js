@@ -188,20 +188,18 @@ const NavBar = () => {
         }
       >
         <h2 className="cursor-pointer flex items-center">
-          <Link
-            href="/"
-            className="font-extrabold text-4xl -ml-20 lg:ml-5"
-          ></Link>
-          <Image
-            src="/bobdao.png"
-            alt=""
-            className="h-10 w-full"
-            width={100}
-            height={100}
-            // style={{
-            //   filter: "brightness(1) invert(1)",
-            // }}
-          />
+          <Link href="/home" className="font-extrabold text-4xl -ml-20 lg:ml-5">
+            <Image
+              src="/bobdao.png"
+              alt=""
+              className="h-10 w-full"
+              width={100}
+              height={100}
+              // style={{
+              //   filter: "brightness(1) invert(1)",
+              // }}
+            />
+          </Link>
           <span
             className={"text-md ml-2 px-2 border rounded-2xl" + borderClass}
           >
@@ -284,11 +282,11 @@ const NavBar = () => {
                           router.pathname === "/" ? (
                             <Link href="/seller">Profile</Link>
                           ) : (
-                            <Link href="seller">Switch to Seller</Link>
+                            <Link href="seller">Switch to Vendor</Link>
                           )
                         ) : (
                           <>
-                            <a href="/freelancer">Become a Seller</a>
+                            <a href="/freelancer">Become a Vendor</a>
                           </>
                         )}
                       </span>
@@ -331,12 +329,13 @@ const NavBar = () => {
                       >
                         Get Commune
                       </Link>
-                      <Link
-                        href="/explore"
+                      <a
+                        href="https://hackweb3confgoa-events-karansathish980-gmailcom.vercel.app/"
                         className="font-light cursor-pointer text-sm mt-1"
+                        target="_Blank"
                       >
                         Explore
-                      </Link>
+                      </a>
                       {/* <Link
                         href="/dao-login"
                         className="font-light cursor-pointer text-sm mt-1"
@@ -352,7 +351,7 @@ const NavBar = () => {
 
               {!isLoggedIn ? (
                 <>
-                  <Link href="/form">
+                  <Link href="/iframe">
                     <span
                       className={
                         "font-light cursor-pointer text-sm mt-1  " + borderClass

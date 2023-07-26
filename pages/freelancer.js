@@ -50,12 +50,12 @@ const CreateFreelancerPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setValue("category", categories?.[0]?.title)
-  }, [categories])
+    setValue("category", categories?.[0]?.title);
+  }, [categories]);
 
   useEffect(() => {
     setValidationErrors("");
-  }, [data])
+  }, [data]);
 
   const [skill, setSkill] = useState([]);
 
@@ -173,306 +173,313 @@ const CreateFreelancerPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-120px)]  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 h-screen  ">
-      <TxBox
-        show={showTxDialog}
-        cancel={setShowTxDialog}
-        txMessage={txMessage}
-      // routeToPush={"/client-profile"}
-      />
-      <div className="mt-20 w-[calc(70vw)] shadow-lg   bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg transition-all duration-500 text-white " style={{ boxShadow: '6px 10px 37px 8px rgba(0,0,0,0.75)' }}>
-        <div className="h-16 w-full flex justify-start items-center border-b pl-8">
-          <span className="font-serif text-2xl">Getting Started</span>
-        </div>
-        <div className="flex items-start justify-center p-8 flex-col">
-          {counter === 0 && (
-            <>
-              <h1 className="font-bold text-xl mb-4">
-                {" "}
-                Ready to start selling on TalentSync?
-              </h1>
-              {/* Cards */}
-              <div className=" flex justify-between flex-col sm:flex-row w-full">
-                <div className="flex space-x-16 w-full">
-                  <form
-                    // onSubmit={(e) => {
-                    //   e.preventDefault();
-                    // }}
-                    className="flex flex-col mt-2 w-full"
-                  >
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-semibold text-gray-300"
+    <div>
+      <div className="video-container relative z-0">
+        <video src={"/genback.mp4"} autoPlay loop muted id="myVideo" />
+      </div>
+      <div className="flex justify-center items-center min-h-[calc(100vh-120px)]  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 h-screen  ">
+        <TxBox
+          show={showTxDialog}
+          cancel={setShowTxDialog}
+          txMessage={txMessage}
+          // routeToPush={"/client-profile"}
+        />
+        <div
+          className="mt-20 w-[calc(70vw)] shadow-lg   bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg transition-all duration-500 text-white "
+          style={{ boxShadow: "6px 10px 37px 8px rgba(0,0,0,0.75)" }}
+        >
+          <div className="h-16 w-full flex justify-start items-center border-b pl-8">
+            <span className="font-serif text-2xl">Getting Started</span>
+          </div>
+          <div className="flex items-start justify-center p-8 flex-col">
+            {counter === 0 && (
+              <>
+                <h1 className="font-bold text-xl mb-4">
+                  {" "}
+                  Ready to join as a vendor
+                </h1>
+                {/* Cards */}
+                <div className=" flex justify-between flex-col sm:flex-row w-full">
+                  <div className="flex space-x-16 w-full">
+                    <form
+                      // onSubmit={(e) => {
+                      //   e.preventDefault();
+                      // }}
+                      className="flex flex-col mt-2 w-full"
                     >
-                      Full Name
-                    </label>
-                    <input
-                      name="name"
-                      {...register("name")}
-                      type="text"
-                      className="mr-2 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                    />
-                    {validationErrors.name && (
-                      <span className="text-red-500">
-                        {validationErrors.name}
-                      </span>
-                    )}
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-semibold text-gray-300"
-                    >
-                      Email
-                    </label>
-                    <input
-                      name="email"
-                      {...register("email")}
-                      type="email"
-                      className="mr-2 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                    />
-                    {validationErrors.email && (
-                      <span className="text-red-500">
-                        {validationErrors.email}
-                      </span>
-                    )}
-
-                    <label
-                      htmlFor="category"
-                      className="text-sm font-semibold text-gray-300"
-                    >
-                      Category
-                    </label>
-                    <select
-                      name="category"
-                      {...register("category")}
-                      className=" bg-gray-900 text-gray-100 my-2 py-2 border-transparent rounded-lg px-2 font-light w-full focus:border-transparent active:border-transparent focus-visible:border-transparent"
-                      value={data.category}
-                      onChange={(e) => {
-                        setValue("category", e.target.value);
-                      }}
-                    >
-                      {categories
-                        ?.map((c) => c.title)
-                        ?.map((category, idx) => (
-                          <option key={idx} value={category}>
-                            {category}
-                          </option>
-                        ))}
-                    </select>
-
-                    {validationErrors.category && (
-                      <span className="text-red-500">
-                        {validationErrors.category}
-                      </span>
-                    )}
-                  </form>
-                </div>
-
-                <div className="flex-col w-full item-end">
-                  <label
-                    htmlFor="profilePic"
-                    className="text-sm font-semibold text-gray-300 ml-4 -mb-10"
-                  >
-                    Profile Picture
-                  </label>
-                  {imageUploaded ? (
-                    <Image
-                      src={URL.createObjectURL(imageUploaded)}
-                      width={1}
-                      height={1}
-                      alt="Change?"
-                      className="w-full h-[40vh] cursor-pointer pl-10"
-                    />
-                  ) : (
-                    <div className="flex-col w-full ">
                       <label
-                        htmlFor="email"
-                        className="text-sm font-semibold text-gray-500 ml-4 -mb-10"
-                      ></label>
-                      <div className="flex items-center justify-center w-full">
-                        <label
-                          for="dropzone-file"
-                          className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-900 ml-4"
-                        >
-                          <div className="flex flex-col items-center justify-center pt-5 pb-6 ">
-                            <svg
-                              aria-hidden="true"
-                              className="w-10 h-10 mb-3 text-gray-400"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                              ></path>
-                            </svg>
-                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                              <span className="font-semibold">
-                                Click to upload
-                              </span>{" "}
-                              or drag and drop
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              SVG, PNG, JPG or GIF (MAX. 800x400px)
-                            </p>
-                          </div>
-                          <input
-                            id="dropzone-file"
-                            type="file"
-                            className="hidden"
-                            onChange={(e) => sendImageToBackend(e)}
-                          />
-                        </label>
-                      </div>
-                      {validationErrors.image && (
+                        htmlFor="name"
+                        className="text-sm font-semibold text-gray-300"
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        name="name"
+                        {...register("name")}
+                        type="text"
+                        className="mr-2 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                      />
+                      {validationErrors.name && (
                         <span className="text-red-500">
-                          {validationErrors.image}
+                          {validationErrors.name}
                         </span>
                       )}
-                    </div>
-                  )}
-                </div>
-                {/* </div> */}
-              </div>
-              <div className="flex w-full mt-5 justify-end items-end">
-                <button
-                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
-                  onClick={handleValidation}
-                >
-                  Continue
-                </button>
-              </div>
-            </>
-          )}
-          {counter === 1 && (
-            <>
-              <h1 className="font-bold text-xl mb-4"> Your Occupation </h1>
-              <input
-                type="text"
-                {...register("occupation")}
-                className="mr-2 w-2/3 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                name="occupation"
-              />
-              {validationErrors.occupation && (
-                <span className="text-red-500">
-                  {validationErrors.occupation}
-                </span>
-              )}
-              <label
-                htmlFor="description"
-                className="font-bold text-xl mb-4 mt-4"
-              >
-                Pitch yourself
-              </label>
-              <textarea
-                name="description"
-                {...register("description")}
-                className="mr-2 w-2/3 h-32 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              />
-              {validationErrors.description && (
-                <span className="text-red-500">
-                  {validationErrors.description}
-                </span>
-              )}
-              <div className="flex w-full h-32 justify-end items-end">
-                <button
-                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
-                  onClick={() => {
-                    setCounter((prevState) => prevState - 1);
-                  }}
-                >
-                  Back
-                </button>
-                <button
-                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
-                  // onClick={() => {
-                  //   setCounter((prevState) => prevState + 1);
-                  // }}
-                  onClick={handleValidation}
-                >
-                  Continue
-                </button>
-              </div>
-            </>
-          )}
-          {counter === 2 && (
-            <>
-              {isLoading ? (
-                <div className="flex items-center align-center justify-center mt-5 ml-5 w-full">
-                  <img src="loading.gif" height={50} width={50} />
-                </div>
-              ) : (
-                <>
-                  <label className="block font-bold text-xl mb-2">
-                    Skills:
-                  </label>
-                  <ReactSelect
-                    options={skillOptions}
-                    isMulti
-                    closeMenuOnSelect={false}
-                    hideSelectedOptions={false}
-                    components={{
-                      Option,
-                    }}
-                    onChange={handleChange}
-                    allowSelectAll={true}
-                    value={skill.optionSelected}
-                    className="block w-full bg-gray-200 text-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: "black",
-                        color: "white",
-                        overflow: "auto",
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: "black",
-                        color: "white",
-                      }),
-                    }}
-                  />
+                      <label
+                        htmlFor="email"
+                        className="text-sm font-semibold text-gray-300"
+                      >
+                        Email
+                      </label>
+                      <input
+                        name="email"
+                        {...register("email")}
+                        type="email"
+                        className="mr-2 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                      />
+                      {validationErrors.email && (
+                        <span className="text-red-500">
+                          {validationErrors.email}
+                        </span>
+                      )}
 
-                  {validationErrors.skill && (
-                    <span className="text-red-500">
-                      {validationErrors.skill}
-                    </span>
-                  )}
+                      <label
+                        htmlFor="category"
+                        className="text-sm font-semibold text-gray-300"
+                      >
+                        Category
+                      </label>
+                      <select
+                        name="category"
+                        {...register("category")}
+                        className=" bg-gray-900 text-gray-100 my-2 py-2 border-transparent rounded-lg px-2 font-light w-full focus:border-transparent active:border-transparent focus-visible:border-transparent"
+                        value={data.category}
+                        onChange={(e) => {
+                          setValue("category", e.target.value);
+                        }}
+                      >
+                        {categories
+                          ?.map((c) => c.title)
+                          ?.map((category, idx) => (
+                            <option key={idx} value={category}>
+                              {category}
+                            </option>
+                          ))}
+                      </select>
 
-                  <div className="flex w-full h-24 justify-end items-end">
-                    <button
-                      className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
-                      onClick={() => {
-                        setCounter((prevState) => prevState - 1);
-                      }}
-                    >
-                      Back
-                    </button>
-                    <button
-                      className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
-                      // onClick={() => {
-                      //   // setCounter((prevState) => prevState + 1);
-                      //   updateUser();
-                      // }}
-                      onClick={async () => {
-                        const p = handleValidation();
-                        console.log("ppppppppppppppp", p);
-                        if (p) {
-                          await updateUser();
-                        }
-                      }}
-                    >
-                      Save & Continue
-                    </button>
+                      {validationErrors.category && (
+                        <span className="text-red-500">
+                          {validationErrors.category}
+                        </span>
+                      )}
+                    </form>
                   </div>
-                </>
-              )}
-            </>
-          )}
-          {/* {counter === 3 && (
+
+                  <div className="flex-col w-full item-end">
+                    <label
+                      htmlFor="profilePic"
+                      className="text-sm font-semibold text-gray-300 ml-4 -mb-10"
+                    >
+                      Profile Picture
+                    </label>
+                    {imageUploaded ? (
+                      <Image
+                        src={URL.createObjectURL(imageUploaded)}
+                        width={1}
+                        height={1}
+                        alt="Change?"
+                        className="w-full h-[40vh] cursor-pointer pl-10"
+                      />
+                    ) : (
+                      <div className="flex-col w-full ">
+                        <label
+                          htmlFor="email"
+                          className="text-sm font-semibold text-gray-500 ml-4 -mb-10"
+                        ></label>
+                        <div className="flex items-center justify-center w-full">
+                          <label
+                            for="dropzone-file"
+                            className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-900 ml-4"
+                          >
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6 ">
+                              <svg
+                                aria-hidden="true"
+                                className="w-10 h-10 mb-3 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                ></path>
+                              </svg>
+                              <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                <span className="font-semibold">
+                                  Click to upload
+                                </span>{" "}
+                                or drag and drop
+                              </p>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                SVG, PNG, JPG or GIF (MAX. 800x400px)
+                              </p>
+                            </div>
+                            <input
+                              id="dropzone-file"
+                              type="file"
+                              className="hidden"
+                              onChange={(e) => sendImageToBackend(e)}
+                            />
+                          </label>
+                        </div>
+                        {validationErrors.image && (
+                          <span className="text-red-500">
+                            {validationErrors.image}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  {/* </div> */}
+                </div>
+                <div className="flex w-full mt-5 justify-end items-end">
+                  <button
+                    className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                    onClick={handleValidation}
+                  >
+                    Continue
+                  </button>
+                </div>
+              </>
+            )}
+            {counter === 1 && (
+              <>
+                <h1 className="font-bold text-xl mb-4"> Your Occupation </h1>
+                <input
+                  type="text"
+                  {...register("occupation")}
+                  className="mr-2 w-2/3 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  name="occupation"
+                />
+                {validationErrors.occupation && (
+                  <span className="text-red-500">
+                    {validationErrors.occupation}
+                  </span>
+                )}
+                <label
+                  htmlFor="description"
+                  className="font-bold text-xl mb-4 mt-4"
+                >
+                  Pitch yourself
+                </label>
+                <textarea
+                  name="description"
+                  {...register("description")}
+                  className="mr-2 w-2/3 h-32 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                />
+                {validationErrors.description && (
+                  <span className="text-red-500">
+                    {validationErrors.description}
+                  </span>
+                )}
+                <div className="flex w-full h-32 justify-end items-end">
+                  <button
+                    className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                    onClick={() => {
+                      setCounter((prevState) => prevState - 1);
+                    }}
+                  >
+                    Back
+                  </button>
+                  <button
+                    className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                    // onClick={() => {
+                    //   setCounter((prevState) => prevState + 1);
+                    // }}
+                    onClick={handleValidation}
+                  >
+                    Continue
+                  </button>
+                </div>
+              </>
+            )}
+            {counter === 2 && (
+              <>
+                {isLoading ? (
+                  <div className="flex items-center align-center justify-center mt-5 ml-5 w-full">
+                    <img src="loading.gif" height={50} width={50} />
+                  </div>
+                ) : (
+                  <>
+                    <label className="block font-bold text-xl mb-2">
+                      Skills:
+                    </label>
+                    <ReactSelect
+                      options={skillOptions}
+                      isMulti
+                      closeMenuOnSelect={false}
+                      hideSelectedOptions={false}
+                      components={{
+                        Option,
+                      }}
+                      onChange={handleChange}
+                      allowSelectAll={true}
+                      value={skill.optionSelected}
+                      className="block w-full bg-gray-200 text-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          backgroundColor: "black",
+                          color: "white",
+                          overflow: "auto",
+                        }),
+                        option: (provided, state) => ({
+                          ...provided,
+                          backgroundColor: "black",
+                          color: "white",
+                        }),
+                      }}
+                    />
+
+                    {validationErrors.skill && (
+                      <span className="text-red-500">
+                        {validationErrors.skill}
+                      </span>
+                    )}
+
+                    <div className="flex w-full h-24 justify-end items-end">
+                      <button
+                        className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                        onClick={() => {
+                          setCounter((prevState) => prevState - 1);
+                        }}
+                      >
+                        Back
+                      </button>
+                      <button
+                        className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                        // onClick={() => {
+                        //   // setCounter((prevState) => prevState + 1);
+                        //   updateUser();
+                        // }}
+                        onClick={async () => {
+                          const p = handleValidation();
+                          console.log("ppppppppppppppp", p);
+                          if (p) {
+                            await updateUser();
+                          }
+                        }}
+                      >
+                        Save & Continue
+                      </button>
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+            {/* {counter === 3 && (
             <>
               <h1 className="font-bold text-xl mb-4"> Account Security </h1>
               <div className="flex justify-between mr-10 w-full items-center my-5">
@@ -553,6 +560,7 @@ const CreateFreelancerPage = () => {
               </div>
             </>
           )} */}
+          </div>
         </div>
       </div>
     </div>

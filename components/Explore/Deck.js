@@ -18,10 +18,7 @@ export const CategoryCard = ({ category }) => {
     <div
       onClick={() => {
         router.push({
-          pathname: "/gigs",
-          query: {
-            category: category.title,
-          },
+          pathname: "/conversation",
         });
       }}
       className={
@@ -41,7 +38,7 @@ export const CategoryCard = ({ category }) => {
           {category?.description}
         </p>
         <h5 className="mb-2 text-xl font-bold tracking-tight text-white">
-          {category?.title}
+          {category?.title} Hub
         </h5>
       </div>
     </div>

@@ -74,17 +74,15 @@ const YourProfile = ({
   const allowEdit = user?.freelancer_ref !== null;
   const [completenss, setcompletenss] = useState(undefined);
 
-
   const boostProfile = async () => {
     let FreelancoContract;
     if (
       contractAddresses["Gig"][chainId]?.[0] &&
       contractAddresses["Freelanco"][chainId]?.[0]
     ) {
-
       FreelancoContract = new ethers.Contract(
         contractAddresses["Freelanco"][chainId]?.[0],
-        Freelanco_abi,
+        Freelanco_abi
       );
     }
     console.log("hoooo");
@@ -353,14 +351,16 @@ const YourProfile = ({
                       : ""}
                   </p>
                   <div className="bg-blue-800 h-8 w-10 p-2 cursor-pointer hover:scale-110 rounded-full relative -right-4 flex justify-center items-center">
-                    <img
-                      src="https://img.icons8.com/ios-glyphs/344/long-arrow-right.png"
-                      alt=""
-                      className="h-8 w-8"
-                      style={{
-                        filter: "brightness(0) invert(1)",
-                      }}
-                    />
+                    <Link href="seller-profile">
+                      <img
+                        src="https://img.icons8.com/ios-glyphs/344/long-arrow-right.png"
+                        alt=""
+                        className="h-8 w-8"
+                        style={{
+                          filter: "brightness(0) invert(1)",
+                        }}
+                      />
+                    </Link>
                   </div>
                 </div>
               </>
